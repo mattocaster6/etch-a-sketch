@@ -4,5 +4,34 @@
     padding: 0;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    height: calc(100vh - 30px);
+}
 
+.row {
+    display: flex;
+    gap: 2px;
+}
 
+.square {
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+}
+
+.filled {
+    background-color: #00fbff;
+}
+
+#reset {
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+}

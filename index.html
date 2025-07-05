@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Etch-A-Sketch</title>
 </head>
+
 <body>
+    <button id="reset">Reset Grid</button>
     <div class="container">
 
     </div>
     <script>
-        function createGrid(x, y) {
-            const container = document.querySelector(".container");
+        const container = document.querySelector(".container");
 
-            
+        function createGrid(x, y) {
+
+            for (let i = 0; i < y; i++) {
+                const row = document.createElement("div");
+                row.classList.add("row");
+
+                for(let j = 0; j < x; j++) {
+                    const square = document.createElement("div");
+                    square.classList.add("square");
+                    row.appendChild(square);
+
+                    square.addEventListener("mouseover", (e) => {
+                        if(!e.target.classList.contains("filled")) {
+                            e.target.classList.add("filled");
+                        }
+                    });
+                }
+
+                container.appendChild(row);
+            }
+
         }
+
+        createGrid(16, 16);
     </script>
 </body>
+
 </html>
