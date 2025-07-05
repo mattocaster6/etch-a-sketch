@@ -29,9 +29,14 @@
                     row.appendChild(square);
 
                     square.addEventListener("mouseover", (e) => {
-                        if (!e.target.classList.contains("filled")) {
-                            e.target.classList.add("filled");
+
+                        if(!e.target.dataset.interactions) {
+                            e.target.dataset.interactions = 0;
                         }
+
+                        e.target.dataset.interactions++;
+
+                        e.target.style.backgroundColor = generateRandomColor(e.target.dataset.interactions);
                     });
                 }
 
@@ -48,7 +53,17 @@
             return dim && Number.isInteger(dim) && dim > 0 && dim <= 100;
         }
 
-        createGrid(16, 16);
+        function random(num) {
+            return Math.floor(Math.random() * num);
+        }
+        function generateRandomColor(darkening) {
+
+            if(darkening >= 10) {
+                return `rgb(0,0,0)`;
+            }
+
+            return `rgb(${random(255) * (1 - darkening*0.1)}, ${random(255) * (1 - darkening*0.1)}, ${random(255) * (1 - darkening*0.1)})`;
+        }
 
         resetButton.addEventListener("click", () => {
             const x = Number(prompt("Enter grid width:"));
@@ -71,6 +86,7 @@
 
         });
 
+        createGrid(16, 16);
     </script>
 </body>
 
