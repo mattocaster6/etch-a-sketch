@@ -9,18 +9,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2px;
     height: calc(100vh - 30px);
 }
 
 .row {
     display: flex;
-    gap: 2px;
 }
 
 .square {
-    width: 40px;
-    height: 40px;
+    width: 10px;
+    height: 10px;
     background-color: #000;
 }
 

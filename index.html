@@ -15,6 +15,7 @@
     </div>
     <script>
         const container = document.querySelector(".container");
+        const resetButton = document.querySelector("#reset");
 
         function createGrid(x, y) {
 
@@ -22,13 +23,13 @@
                 const row = document.createElement("div");
                 row.classList.add("row");
 
-                for(let j = 0; j < x; j++) {
+                for (let j = 0; j < x; j++) {
                     const square = document.createElement("div");
                     square.classList.add("square");
                     row.appendChild(square);
 
                     square.addEventListener("mouseover", (e) => {
-                        if(!e.target.classList.contains("filled")) {
+                        if (!e.target.classList.contains("filled")) {
                             e.target.classList.add("filled");
                         }
                     });
@@ -39,7 +40,37 @@
 
         }
 
+        function removeGrid() {
+            container.innerHTML = "";
+        }
+
+        function isValidDimension(dim) {
+            return dim && Number.isInteger(dim) && dim > 0 && dim <= 100;
+        }
+
         createGrid(16, 16);
+
+        resetButton.addEventListener("click", () => {
+            const x = Number(prompt("Enter grid width:"));
+
+            if (!isValidDimension(x)) {
+                alert("Invalid input!");
+                return;
+            }
+
+            const y = Number(prompt("Enter grid height:"));
+
+            if (!isValidDimension(y)) {
+                alert("Invalid input!");
+                return;
+            }
+
+            removeGrid();
+
+            createGrid(x, y);
+
+        });
+
     </script>
 </body>
 
